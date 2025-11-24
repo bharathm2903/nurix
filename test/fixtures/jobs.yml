@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  status: MyString
+  payload: 
+  idempotency_key: MyString
+  retry_count: 1
+  max_retries: 1
+  leased_at: 2025-11-23 22:57:46
+  leased_by: MyString
+  error_message: MyText
+  trace_id: MyString
+  started_at: 2025-11-23 22:57:46
+  completed_at: 2025-11-23 22:57:46
+
+two:
+  user: two
+  status: MyString
+  payload: 
+  idempotency_key: MyString
+  retry_count: 1
+  max_retries: 1
+  leased_at: 2025-11-23 22:57:46
+  leased_by: MyString
+  error_message: MyText
+  trace_id: MyString
+  started_at: 2025-11-23 22:57:46
+  completed_at: 2025-11-23 22:57:46

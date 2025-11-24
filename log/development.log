@@ -1,0 +1,132 @@
+Started GET "/jobs/1" for 127.0.0.1 at 2025-11-25 00:30:16 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/jobs/1"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for 127.0.0.1 at 2025-11-25 00:30:17 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/cable" for 127.0.0.1 at 2025-11-25 00:30:29 +0530
+Started GET "/cable" [WebSocket] for 127.0.0.1 at 2025-11-25 00:30:29 +0530
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+JobsChannel is transmitting the subscription confirmation
+JobsChannel is streaming from jobs:updates
+Started GET "/api/jobs/1" for 127.0.0.1 at 2025-11-25 00:30:30 +0530
+Processing by Api::JobsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:16:in 'ApplicationController#authenticate_user!'
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/jobs_controller.rb:80:in 'Api::JobsController#set_job'
+Fetching Job - 1 Details....
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 12690)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for 127.0.0.1 at 2025-11-25 00:30:30 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+  [1m[36mJob Exists? (6.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jobs" LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/" for ::1 at 2025-11-25 00:57:03 +0530
+Processing by DashboardController#index as HTML
+  [1m[36mJob Count (8.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs"[0m
+  ↳ app/controllers/dashboard_controller.rb:5:in 'DashboardController#index'
+  [1m[36mJob Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "pending"]]
+  ↳ app/controllers/dashboard_controller.rb:6:in 'DashboardController#index'
+  [1m[36mJob Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "running"]]
+  ↳ app/controllers/dashboard_controller.rb:7:in 'DashboardController#index'
+  [1m[36mJob Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "done"]]
+  ↳ app/controllers/dashboard_controller.rb:8:in 'DashboardController#index'
+  [1m[36mJob Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "failed"]]
+  ↳ app/controllers/dashboard_controller.rb:9:in 'DashboardController#index'
+  [1m[36mJob Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "dlq"]]
+  ↳ app/controllers/dashboard_controller.rb:10:in 'DashboardController#index'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."status" = ? ORDER BY "jobs"."started_at" DESC LIMIT ?[0m  [["status", "running"], ["LIMIT", 20]]
+  ↳ app/views/dashboard/index.html.erb:204:in '_app_views_dashboard_index_html_erb___2696887486494925640_31392'
+  [1m[36mJob Load (0.5ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."status" = ? ORDER BY "jobs"."created_at" DESC LIMIT ?[0m  [["status", "dlq"], ["LIMIT", 20]]
+  ↳ app/views/dashboard/index.html.erb:237:in '_app_views_dashboard_index_html_erb___2696887486494925640_31392'
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" ORDER BY "jobs"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/dashboard/index.html.erb:273:in '_app_views_dashboard_index_html_erb___2696887486494925640_31392'
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 7566)
+  Rendered layout layouts/application.html.erb (Duration: 1374.7ms | Allocations: 61741)
+Completed 200 OK in 1411ms (Views: 1377.3ms | ActiveRecord: 14.6ms | Allocations: 67718)
+
+
+Started GET "/cable" for ::1 at 2025-11-25 00:57:05 +0530
+Started GET "/cable" [WebSocket] for ::1 at 2025-11-25 00:57:05 +0530
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+JobsChannel is transmitting the subscription confirmation
+JobsChannel is streaming from jobs:updates
+Started GET "/cable" for 127.0.0.1 at 2025-11-25 00:57:29 +0530
+Started GET "/cable" [WebSocket] for 127.0.0.1 at 2025-11-25 00:57:29 +0530
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+JobsChannel is transmitting the subscription confirmation
+JobsChannel is streaming from jobs:updates
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-11-25 01:03:59 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-11-25 01:04:06 +0530
+Processing by DashboardController#index as HTML
+  [1m[36mJob Count (9.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs"[0m
+  ↳ app/controllers/dashboard_controller.rb:5:in 'DashboardController#index'
+  [1m[36mJob Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "pending"]]
+  ↳ app/controllers/dashboard_controller.rb:6:in 'DashboardController#index'
+  [1m[36mJob Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "running"]]
+  ↳ app/controllers/dashboard_controller.rb:7:in 'DashboardController#index'
+  [1m[36mJob Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "done"]]
+  ↳ app/controllers/dashboard_controller.rb:8:in 'DashboardController#index'
+  [1m[36mJob Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "failed"]]
+  ↳ app/controllers/dashboard_controller.rb:9:in 'DashboardController#index'
+  [1m[36mJob Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."status" = ?[0m  [["status", "dlq"]]
+  ↳ app/controllers/dashboard_controller.rb:10:in 'DashboardController#index'
+  Rendering layout layouts/application.html.erb
+  Rendering dashboard/index.html.erb within layouts/application
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."status" = ? ORDER BY "jobs"."started_at" DESC LIMIT ?[0m  [["status", "running"], ["LIMIT", 20]]
+  ↳ app/views/dashboard/index.html.erb:204:in '_app_views_dashboard_index_html_erb___2696887486494925640_37584'
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."status" = ? ORDER BY "jobs"."created_at" DESC LIMIT ?[0m  [["status", "dlq"], ["LIMIT", 20]]
+  ↳ app/views/dashboard/index.html.erb:237:in '_app_views_dashboard_index_html_erb___2696887486494925640_37584'
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" ORDER BY "jobs"."created_at" DESC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/dashboard/index.html.erb:273:in '_app_views_dashboard_index_html_erb___2696887486494925640_37584'
+  Rendered dashboard/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 7566)
+  Rendered layout layouts/application.html.erb (Duration: 45.7ms | Allocations: 38793)
+Completed 200 OK in 77ms (Views: 47.6ms | ActiveRecord: 16.0ms | Allocations: 44750)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-11-25 01:04:06 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/cable" for ::1 at 2025-11-25 01:04:06 +0530
+Started GET "/cable" [WebSocket] for ::1 at 2025-11-25 01:04:06 +0530
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+JobsChannel is transmitting the subscription confirmation
+JobsChannel is streaming from jobs:updates
+Started GET "/cable" for 127.0.0.1 at 2025-11-25 01:04:29 +0530
+Started GET "/cable" [WebSocket] for 127.0.0.1 at 2025-11-25 01:04:29 +0530
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+JobsChannel is transmitting the subscription confirmation
+JobsChannel is streaming from jobs:updates
+Started GET "/api/jobs?status=pending" for 127.0.0.1 at 2025-11-25 01:05:59 +0530
+Processing by Api::JobsController#index as HTML
+  Parameters: {"status" => "pending"}
+  [1m[36mUser Load (8.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in 'ApplicationController#authenticate_user!'
+  [1m[36mJob Count (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."status" = ?[0m  [["user_id", 1], ["status", "pending"]]
+  ↳ app/controllers/api/jobs_controller.rb:63:in 'Api::JobsController#index'
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."status" = ? ORDER BY "jobs"."created_at" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["status", "pending"], ["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/controllers/api/jobs_controller.rb:67:in 'Enumerable#map'
+Completed 200 OK in 28ms (Views: 0.3ms | ActiveRecord: 9.6ms | Allocations: 6023)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for 127.0.0.1 at 2025-11-25 01:05:59 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Finished "/cable" [WebSocket] for ::1 at 2025-11-25 01:06:32 +0530
+JobsChannel stopped streaming from jobs:updates
+Finished "/cable" [WebSocket] for 127.0.0.1 at 2025-11-25 01:06:32 +0530
+JobsChannel stopped streaming from jobs:updates
